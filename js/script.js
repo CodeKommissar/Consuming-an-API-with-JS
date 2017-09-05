@@ -15,16 +15,21 @@ request.onload = function() {
 
 request.send();
 
-// My code (With some help of MDN and 'ES6 for Everybody')
+// My code: (With some help of MDN and 'ES6 for Everybody')
+
 function dislayHTMLTable(data) {
+  // Had to use [0] at the end because getElementsByClassName() returns a node list
   const table_body = document.getElementsByClassName("table-body-js")[0];
   let persons = "";
   for (person of data.results) {
+    // Add the data of each person as a string representing an HTML <tr> element
+    // in the persons variable
     persons += `<tr>
         <td>${person.name.first}</td>
         <td>${person.name.last}</td>
         <td>${person.gender}</td>
       </tr>`;
   }
+  // Insert our table rows to our table body
   table_body.innerHTML = persons;
 }
